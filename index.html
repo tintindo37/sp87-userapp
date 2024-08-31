@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <title>Generator użytkowników</title>
     <link rel="stylesheet" href="https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://github.com/tintindo37/sp87-userapp/blob/prod/img/logo.png?raw=true">
+=======
+    <title>Command Generator</title>
+    <link rel="stylesheet" href="css/styles.css">
+>>>>>>> Stashed changes
 </head>
 <body>
     <div class="container">
@@ -30,7 +35,98 @@
         <div id="div2">
         </div>
     </div>
+<<<<<<< Updated upstream
     <script src="https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/js/main.js"></script>
+=======
+    <script>
+        const but1 = document.getElementById("rand");
+        const dlbut1 = document.getElementById("dlugosc");
+        function ranpass(){
+        if(but1.checked == true){
+            dlbut1.style.display = "block";
+        } else {
+            dlbut1.style.display = "none";
+        }
+        }
+
+        var num = 0
+        function createname(arr,int,len) {
+            const div2 = document.getElementById('div2');
+            let d = document.createElement("br");
+            div2.appendChild(d);
+            let x = document.createElement("select");
+            x.setAttribute("id", "pc");
+            div2.appendChild(x);
+            let i1 = document.createElement("input");
+            i1.setAttribute("type", "text");
+            i1.setAttribute("id", "userx");
+            i1.setAttribute("placeholder", "Username");
+            let i2 = document.createElement("input");
+            i2.setAttribute("type", "text");
+            i2.setAttribute("id", "passx");
+            i2.setAttribute("placeholder", "Password");
+            if (len > 0){
+                i2.value = generatePassword(len) ;
+            }
+            div2.appendChild(i1);
+            div2.appendChild(i2);
+            populateList(arr, int)
+            num++;
+        }
+        
+        function populateList(arr,int) {
+        const pc = document.querySelectorAll('[id=pc]');
+
+        let option1 = document.createElement("option");
+        option1.innerHTML = arr[int];
+        pc[int].appendChild(option1);
+        arr.forEach(komp => {
+            let option = document.createElement("option");
+            option.innerHTML = komp;
+            pc[int].appendChild(option);
+        });
+        }
+        function generatePassword(len) {
+            var length = len,
+                charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                retVal = "";
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                retVal += charset.charAt(Math.floor(Math.random() * n));
+            }
+            return retVal;
+        }
+    
+        function generateCommand() {
+            const commandInput = document.getElementById('command').value -1;
+            const dl = document.getElementById('dlugosc').value;
+            const div2 = document.getElementById('div2');
+            const komp = ["S215-01", "S215-02", "S215-03", "S215-04", "S215-05", "S215-06", "S215-07", "S215-08","S215-09","S215-10", "S215-11", "S215-12", "S215-13 nie działa", "S215-14", "S215-15", "S215-16","S215-17","S215-18", "S215-19", "S215-20", "S215-21","S215-22","S215-23","S215-24",] ; 
+            document.getElementById('div1').innerHTML = "";
+            i=0
+            while (i <= commandInput) {    
+                createname(komp, i, dl);
+                i++;
+            } 
+            let but1 = document.createElement("button");
+            but1.innerHTML = "Generate";
+            but1.setAttribute("id", "comgen");
+            but1.setAttribute("onclick", "comgen()");
+            div2.appendChild(but1);      
+        }
+
+        function comgen(){
+            const kom = document.querySelectorAll('[id=pc]');
+            const uzyt = document.querySelectorAll('[id=userx]');
+            const pass = document.querySelectorAll('[id=passx]');
+            console.log(kom[0].value);
+            console.log(uzyt[0].value);
+            console.log(pass[0].value);
+
+        }
+
+
+    </script>
+>>>>>>> Stashed changes
 </body>
 </html>
  
