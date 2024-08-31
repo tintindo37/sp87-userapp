@@ -4,6 +4,7 @@ body {
     background-color: #f4f4f4;
 }
 .container {
+    min-width: fit-content;
     max-width: 500px;
     margin: auto;
     padding: 20px;
@@ -19,6 +20,20 @@ label {
     display: block;
 }
 #command {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#dlugosc{
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#comm2 {
     width: 100%;
     padding: 8px;
     margin: 5px 0 20px;
