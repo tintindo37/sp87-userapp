@@ -1,6 +1,7 @@
 const but1 = document.getElementById("rand");
 const but3 = document.getElementById("changepass");
 const dlbut1 = document.getElementById("dlugosc");
+//funkcja co zmienia widoczność inputa gdzie można wpisać jak długo hasło wpisać
 function ranpass(){
 if(but1.checked == true){
     dlbut1.style.display = "block";
@@ -8,7 +9,7 @@ if(but1.checked == true){
     dlbut1.style.display = "none";
 }
 }
-
+//funkcja która tworzy inputy i miejsce gdzie mozna wpisac nazwe, haslo i wybrac komputer
 var num = 0
 function createname(arr,int,len) {
     const div2 = document.getElementById('div2');
@@ -33,19 +34,20 @@ function createname(arr,int,len) {
     populateList(arr, int)
     num++;
 }
-
+//funkcja do wypełnienia listy komputerów
+//W przyszłości chce żeby automatycznie brało z action1 ale musze się nauczyć jak pisać api
 function populateList(arr,int) {
-const pc = document.querySelectorAll('[id=pc]');
-
-let option1 = document.createElement("option");
-option1.innerHTML = arr[int];
-pc[int].appendChild(option1);
-arr.forEach(komp => {
-    let option = document.createElement("option");
-    option.innerHTML = komp;
-    pc[int].appendChild(option);
-});
+    const pc = document.querySelectorAll('[id=pc]');
+    let option1 = document.createElement("option");
+    option1.innerHTML = arr[int];
+    pc[int].appendChild(option1);
+    arr.forEach(komp => {
+        let option = document.createElement("option");
+        option.innerHTML = komp;
+        pc[int].appendChild(option);
+    });
 }
+//funkcja do generowania hasła
 function generatePassword(len) {
     var length = len,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -55,7 +57,10 @@ function generatePassword(len) {
     }
     return retVal;
 }
+//funkcja co genruje drugi krok aplikacji
 function generateCommand() {
+    const h1 = document.getElementById("tytul");
+    h1.innerHTML = "Wpisać dane";
     const commandInput = document.getElementById('command').value-1;
     const dl = document.getElementById('dlugosc').value;
     const div2 = document.getElementById('div2');
@@ -73,11 +78,13 @@ function generateCommand() {
     but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
     div2.appendChild(but1);      
 }
-
+//generowanie ostatecznego kroku aplikacji 
 function comgen(ileosob,klasa){
     const kom = document.querySelectorAll('[id=pc]');
     const uzyt = document.querySelectorAll('[id=userx]');
     const pass = document.querySelectorAll('[id=passx]');
+    const h1 = document.getElementById("tytul");
+    h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
     let i=0;
     let listakomp = [];
     let usernamex = [];
@@ -89,7 +96,7 @@ function comgen(ileosob,klasa){
         listakomp.push('"'+kom[i].value+'"');
         usernamex.push('"'+uzyt[i].value+'"');
         passwordx.push('"'+pass[i].value+'"');
-        klasax.push('"'+klasa+'"');
+        klasax.push('"Klasa '+klasa+'"');
         if(but3.checked == true){
             changepassx.push('"yes"');   
         }
@@ -109,7 +116,7 @@ function comgen(ileosob,klasa){
     const div2 = document.getElementById('div2');
     div2.innerHTML = "";
     let p = document.createElement("p");
-    p.innerHTML = listaex +"<br>"+ userex +"<br>"+ pasx +"<br>"+ changex+"<br>"+ klaex +"<br>"+ imiex;
+    p.innerHTML = listaex +"`n <br>"+ userex +"`n <br>"+ pasx +"`n <br>"+ changex+"`n <br>"+ klaex +"`n <br>"+ imiex +"`n";
     div2.appendChild(p);
 }
 
