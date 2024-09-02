@@ -64,19 +64,39 @@ function generateCommand() {
     const commandInput = document.getElementById('command').value-1;
     const dl = document.getElementById('dlugosc').value;
     const div2 = document.getElementById('div2');
+    const checklista = document.getElementById("listax");
     const komp = ["S215-01", "S215-02", "S215-03", "S215-04", "S215-05", "S215-06", "S215-07", "S215-08","S215-09","S215-10", "S215-11", "S215-12", "S215-13 nie działa", "S215-14", "S215-15", "S215-16","S215-17","S215-18", "S215-19", "S215-20", "S215-21","S215-22","S215-23","S215-24",] ; 
     const klasa = document.getElementById("comm2").value;
     document.getElementById('div1').innerHTML = "";
-    let i = 0;
-    while (i <= commandInput) {    
-        createname(komp, i, dl);
-        i++;
-    } 
-    let but1 = document.createElement("button");
-    but1.innerHTML = "wygeneruj komende";
-    but1.setAttribute("id", "comgen");
-    but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
-    div2.appendChild(but1);      
+    if (checklista.checked == true){          
+        var table = document.createElement('TABLE');
+        table.border = '1';
+        var tableBody = document.createElement('TBODY');
+        table.appendChild(tableBody);
+        for (var i = 0; i < 3; i++) {
+            var tr = document.createElement('TR');
+            tableBody.appendChild(tr);
+        
+            for (var j = 0; j < 2; j++) {
+              var td = document.createElement('TD');
+              td.width = '75';
+              td.appendChild(document.createTextNode("sfsfm "));
+              tr.appendChild(td);
+            }
+          }
+          div2.appendChild(table);
+    }else{
+        let i = 0;
+        while (i <= commandInput) {    
+            createname(komp, i, dl);
+            i++;
+        } 
+        let but1 = document.createElement("button");
+        but1.innerHTML = "wygeneruj komende";
+        but1.setAttribute("id", "comgen");
+        but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
+        div2.appendChild(but1);    
+    }
 }
 //generowanie ostatecznego kroku aplikacji 
 function comgen(ileosob,klasa){
