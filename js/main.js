@@ -34,6 +34,30 @@ function createname(arr,int,len) {
     populateList(arr, int)
     num++;
 }
+var num = 0
+function creatlistname(arr,int,len, arrimie) {
+    const div2 = document.getElementById('div2');
+    let d = document.createElement("br");
+    div2.appendChild(d);
+    let x = document.createElement("select");
+    x.setAttribute("id", "pc");
+    div2.appendChild(x);
+    let i1 = document.createElement("input");
+    i1.setAttribute("type", "text");
+    i1.setAttribute("id", "userx");
+    i1.setAttribute("placeholder", "Username");
+    let i2 = document.createElement("input");
+    i2.setAttribute("type", "text");
+    i2.setAttribute("id", "passx");
+    i2.setAttribute("placeholder", "Password");
+    if (len > 0){
+        i2.value = generatePassword(len) ;
+    }
+    div2.appendChild(i1);
+    div2.appendChild(i2);
+    populateList(arr, int)
+    num++;
+}
 //funkcja do wypełnienia listy komputerów
 //W przyszłości chce żeby automatycznie brało z action1 ale musze się nauczyć jak pisać api
 function populateList(arr,int) {
@@ -58,7 +82,43 @@ function generatePassword(len) {
     return retVal;
 }
 //funkcja co genruje drugi krok aplikacji
-function generateCommand() {
+function generateCommand() {0
+    if (checklista.checked == true){  
+        const h1 = document.getElementById("tytul");
+        h1.innerHTML = "Wpisać imie i nazwiska";
+        let txtbox = div2.createElement("textarea");
+        txtbox.setAttribute("id","namesInput")
+        txtbox.setAttribute("placeholder", "Wpisać imie i nazwiska, każde na nowej lini")        
+        let but1 = document.createElement("button");
+        but1.innerHTML = "wygeneruj komende";
+        but1.setAttribute("id", "comgen");
+        but1.setAttribute("onclick", "comgen("+processNames()+")");
+        div2.appendChild(but1); 
+    }else{
+        genCommand();
+    }
+}
+
+function processNames() {
+    const namesText = document.getElementById("namesInput").value;
+    // Split the input by new lines
+    const namesArray = namesText.split("\n");
+    // Get the unordered list element
+    const namesList = document.getElementById("namesList");
+    let namlista = [];
+    // Clear previous list items
+    namesList.innerHTML = ""; 
+    // Create a list item for each name
+    let ileimion = 0;
+    namesArray.forEach(name => {
+        if(name.trim() !== "") {
+            nameslist.push(name.trim());
+            ileimion++
+        }  
+    });
+    creatlistname(arr,int,len, arrimie) 
+}
+function genCommand() {
     const h1 = document.getElementById("tytul");
     h1.innerHTML = "Wpisać dane";
     const commandInput = document.getElementById('command').value-1;
@@ -67,37 +127,19 @@ function generateCommand() {
     const checklista = document.getElementById("listax");
     const komp = ["S215-01", "S215-02", "S215-03", "S215-04", "S215-05", "S215-06", "S215-07", "S215-08","S215-09","S215-10", "S215-11", "S215-12", "S215-13 nie działa", "S215-14", "S215-15", "S215-16","S215-17","S215-18", "S215-19", "S215-20", "S215-21","S215-22","S215-23","S215-24",] ; 
     const klasa = document.getElementById("comm2").value;
-    document.getElementById('div1').innerHTML = "";
-    if (checklista.checked == true){          
-        var table = document.createElement('TABLE');
-        table.border = '1';
-        var tableBody = document.createElement('TBODY');
-        table.appendChild(tableBody);
-        for (var i = 0; i < 3; i++) {
-            var tr = document.createElement('TR');
-            tableBody.appendChild(tr);
-        
-            for (var j = 0; j < 2; j++) {
-              var td = document.createElement('TD');
-              td.width = '75';
-              td.appendChild(document.createTextNode("sfsfm "));
-              tr.appendChild(td);
-            }
-          }
-          div2.appendChild(table);
-    }else{
-        let i = 0;
-        while (i <= commandInput) {    
-            createname(komp, i, dl);
-            i++;
-        } 
-        let but1 = document.createElement("button");
-        but1.innerHTML = "wygeneruj komende";
-        but1.setAttribute("id", "comgen");
-        but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
-        div2.appendChild(but1);    
-    }
+    document.getElementById('div1').innerHTML = "";   
+    let i = 0;
+    while (i <= commandInput) {    
+        createname(komp, i, dl);
+        i++;
+    } 
+    let but1 = document.createElement("button");
+    but1.innerHTML = "wygeneruj komende";
+    but1.setAttribute("id", "comgen");
+    but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
+    div2.appendChild(but1);    
 }
+
 //generowanie ostatecznego kroku aplikacji 
 function comgen(ileosob,klasa){
     const kom = document.querySelectorAll('[id=pc]');
