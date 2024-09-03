@@ -3,11 +3,28 @@ const but3 = document.getElementById("changepass");
 const dlbut1 = document.getElementById("dlugosc");
 //funkcja co zmienia widoczność inputa gdzie można wpisać jak długo hasło wpisać
 function ranpass(){
-if(but1.checked == true){
-    dlbut1.style.display = "block";
-} else {
-    dlbut1.style.display = "none";
+    if(but1.checked == true){
+        dlbut1.style.display = "block";
+    } else {
+        dlbut1.style.display = "none";
+    }
 }
+//funkcja co chowa input na ilosc uzytkownikow przy wpisaniu uzytkownikow z listy
+const checklistax = document.getElementById("listax");
+const com1 = document.getElementById("command");
+const lcom1 = document.getElementById("lcommand");
+function listanamebut(){   
+    if(checklistax.checked !== true){
+        com1.style.display = "block";
+        lcom1.style.display = "block";
+    } else {
+        com1.style.display = "none";
+        lcom1.style.display = "none";
+    }
+}
+//funkcja co idzie do głównego ekranu
+function goBack() {
+    location.reload();
 }
 //funkcja która tworzy inputy i miejsce gdzie mozna wpisac nazwe, haslo i wybrac komputer
 var num = 0
@@ -34,8 +51,9 @@ function createname(arr,int,len) {
     populateList(arr, int)
     num++;
 }
+//funkcja co bierze imie i nazwiska i zamienia je w inputy
 var num = 0
-function creatlistname(arr,int,len, arrimie) {
+function creatlistname(arr,ile,len, imienazw) {
     const div2 = document.getElementById('div2');
     let d = document.createElement("br");
     div2.appendChild(d);
@@ -43,7 +61,7 @@ function creatlistname(arr,int,len, arrimie) {
     x.setAttribute("id", "pc");
     div2.appendChild(x);
     let i1 = document.createElement("input");
-    i1.innerHTML = "";
+    i1.value = imienazw;
     i1.setAttribute("type", "text");
     i1.setAttribute("id", "userx");
     i1.setAttribute("placeholder", "Username");
@@ -56,7 +74,7 @@ function creatlistname(arr,int,len, arrimie) {
     }
     div2.appendChild(i1);
     div2.appendChild(i2);
-    populateList(arr, int)
+    populateList(arr, ile)
     num++;
 }
 //funkcja do wypełnienia listy komputerów
@@ -82,51 +100,103 @@ function generatePassword(len) {
     }
     return retVal;
 }
+//funkcja co usuwa Polskie znaki
+function removePolishCharacters(arr) {
+    const polishToEnglishMap = {
+        'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
+        'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z'
+    };
+
+    return arr.map(item => {
+        return item.split('').map(char => polishToEnglishMap[char] || char).join('');
+    });
+}
 //funkcja co genruje drugi krok aplikacji
-function generateCommand() {0
-    if (checklista.checked == true){  
+function generateCommand() {
+    const checklista = document.getElementById("listax");
+    const klasa = document.getElementById("comm2").value;
+    if(klasa.length == 0){
+        alert("Proszę wypełnić klasę")
+        exit()
+    }
+    if (checklista.checked == true){
+        const checkdl = document.getElementById("rand");
+        if(checkdl.checked == true){
+            var dl = document.getElementById('dlugosc').value; 
+        }else{
+            var dl = 0;
+        }
         const h1 = document.getElementById("tytul");
         h1.innerHTML = "Wpisać imie i nazwiska";
-        let txtbox = div2.createElement("textarea");
+        const div1 = document.getElementById("div1")
+        div1.innerHTML = "";
+        const div2 = document.getElementById('div2');
+        let txtbox = document.createElement("textarea");
         txtbox.setAttribute("id","namesInput")
-        txtbox.setAttribute("placeholder", "Wpisać imie i nazwiska, każde na nowej lini")        
+        txtbox.setAttribute("placeholder", "Wpisać imie i nazwiska, każde na nowej lini (automatycznie polskie znaki się usuną)")    
+        div2.appendChild(txtbox);     
         let but1 = document.createElement("button");
         but1.innerHTML = "wygeneruj komende";
         but1.setAttribute("id", "comgen");
-        but1.setAttribute("onclick", "comgen("+processNames()+")");
+        but1.setAttribute("onclick", 'processNames('+dl+',"'+ klasa+'")');
         div2.appendChild(but1); 
+        let back = document.createElement("button");
+        back.setAttribute("class", "back-button");
+        back.setAttribute("onclick", "goBack()");
+        back.innerHTML="Powrót do Menu";
+        div2.appendChild(back);
     }else{
         genCommand();
     }
 }
-
-function processNames() {
+function processNames(dl,klasa) {
     const namesText = document.getElementById("namesInput").value;
     // Split the input by new lines
     const namesArray = namesText.split("\n");
     // Get the unordered list element
     const namesList = document.getElementById("namesList");
     let namlista = [];
-    // Clear previous list items
-    namesList.innerHTML = ""; 
     // Create a list item for each name
     let ileimion = 0;
     namesArray.forEach(name => {
         if(name.trim() !== "") {
-            nameslist.push(name.trim());
+            namlista.push(name.trim());
             ileimion++
         }  
     });
-    
-    creatlistname(arr,int,len, arrimie) 
+    let namlistapl = removePolishCharacters(namlista)
+    genCommandname(ileimion-1, dl, namlistapl, klasa )
+
+}
+function genCommandname(commandInput, dl, namlista, klasa) {
+    const h1 = document.getElementById("tytul");
+    h1.innerHTML = "Sprawdzić dane";
+    const div2 = document.getElementById('div2');
+    const komp = ["S215-01", "S215-02", "S215-03", "S215-04", "S215-05", "S215-06", "S215-07", "S215-08","S215-09","S215-10", "S215-11", "S215-12", "S215-13 nie działa", "S215-14", "S215-15", "S215-16","S215-17","S215-18", "S215-19", "S215-20", "S215-21","S215-22","S215-23","S215-24",] ; 
+    document.getElementById('div2').innerHTML = "";
+    let i = 0;
+    while (i <= commandInput) {
+        let x = namlista[i]+" " +klasa; 
+        creatlistname(komp, i, dl, x);
+        i++;
+    } 
+    let but1 = document.createElement("button");
+    but1.innerHTML = "wygeneruj komende";
+    but1.setAttribute("id", "comgen");
+    but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
+    div2.appendChild(but1); 
+    let back = document.createElement("button");
+    back.setAttribute("class", "back-button");
+    back.setAttribute("onclick", "goBack()");
+    back.innerHTML="Powrót do Menu";
+    div2.appendChild(back);   
 }
 function genCommand() {
     const h1 = document.getElementById("tytul");
     h1.innerHTML = "Wpisać dane";
     const commandInput = document.getElementById('command').value-1;
-    const dl = document.getElementById('dlugosc').value;
+    let dl = document.getElementById('dlugosc').value;
     const div2 = document.getElementById('div2');
-    const checklista = document.getElementById("listax");
     const komp = ["S215-01", "S215-02", "S215-03", "S215-04", "S215-05", "S215-06", "S215-07", "S215-08","S215-09","S215-10", "S215-11", "S215-12", "S215-13 nie działa", "S215-14", "S215-15", "S215-16","S215-17","S215-18", "S215-19", "S215-20", "S215-21","S215-22","S215-23","S215-24",] ; 
     const klasa = document.getElementById("comm2").value;
     document.getElementById('div1').innerHTML = "";   
@@ -140,6 +210,11 @@ function genCommand() {
     but1.setAttribute("id", "comgen");
     but1.setAttribute("onclick", 'comgen('+commandInput+',"'+ klasa+'")');
     div2.appendChild(but1);    
+    let back = document.createElement("button");
+    back.setAttribute("class", "back-button");
+    back.setAttribute("onclick", "goBack()");
+    back.innerHTML="Powrót do Menu";
+    div2.appendChild(back);
 }
 
 //generowanie ostatecznego kroku aplikacji 
@@ -151,15 +226,15 @@ function comgen(ileosob,klasa){
     h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
     let i=0;
     let listakomp = [];
-    let usernamex = [];
-    let passwordx = [];
+    let usernampl = [];
+    let passwordxpl = [];
     let changepassx = [];
     let imienazw = [];
     let klasax = [];
     while (i <= ileosob) {    
         listakomp.push('"'+kom[i].value+'"');
-        usernamex.push('"'+uzyt[i].value+'"');
-        passwordx.push('"'+pass[i].value+'"');
+        usernampl.push('"'+uzyt[i].value+'"');
+        passwordxpl.push('"'+pass[i].value+'"');
         klasax.push('"Klasa '+klasa+'"');
         if(but3.checked == true){
             changepassx.push('"yes"');   
@@ -171,6 +246,10 @@ function comgen(ileosob,klasa){
     //    imienazw.push[];   //do zrobienia dodac imie i nazwisko
         i++;
     } 
+
+    let usernamex = removePolishCharacters(usernampl);
+    let passwordx = removePolishCharacters(passwordxpl);
+
     let listaex = "$listakomp = @("+listakomp.toString()+")";
     let userex = "$nazwauzyt = @("+usernamex.toString()+")";
     let pasx = "$pass = @("+passwordx.toString()+")";
@@ -182,6 +261,16 @@ function comgen(ileosob,klasa){
     let p = document.createElement("p");
     p.innerHTML = listaex +"`n <br>"+ userex +"`n <br>"+ pasx +"`n <br>"+ changex+"`n <br>"+ klaex +"`n <br>"+ imiex +"`n";
     div2.appendChild(p);
+    let br = document.createElement("br");
+    div2.appendChild(br);
+    div2.appendChild(br);
+    div2.appendChild(br);
+    let back = document.createElement("button");
+    back.setAttribute("class", "back-button");
+    back.setAttribute("onclick", "goBack()");
+    back.innerHTML="Powrót do Menu";
+    div2.appendChild(back);
+    
 }
 
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
