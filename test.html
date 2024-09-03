@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Names List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f4f4f4;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Enter Names and Surnames</h1>
+    <textarea id="namesInput" placeholder="Enter names and surnames, each on a new line"></textarea>
+    <br><br>
+    <button onclick="processNames()">Submit</button>
+
+    <h2>List of Names</h2>
+    <ul id="namesList"></ul>
+
+    <script>
+        function processNames() {
+            // Get the textarea value
+            const namesText = document.getElementById("namesInput").value;
+            
+            // Split the input by new lines
+            const namesArray = namesText.split("\n");
+            
+            // Get the unordered list element
+            const namesList = document.getElementById("namesList");
+            
+            // Clear previous list items
+            namesList.innerHTML = "";
+            
+            // Create a list item for each name
+            namesArray.forEach(name => {
+                if(name.trim() !== "") {
+                    const li = document.createElement("li");
+                    li.textContent = name.trim();
+                    namesList.appendChild(li);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

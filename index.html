@@ -11,20 +11,31 @@
 <body>
     <div class="container">
         <h1 id="tytul">Utwórz użytkowników</h1>
+        <br>
         <div id="div1">
-        <label for="command">Ile użytkowników utworzyć?</label>
-        <input type="number" id="command" placeholder="Wpisac ilu użytkowników trzeba dodać max 24">
-        <input type="text" id="comm2" placeholder="Klasa uczniów np. 8a albo 4c-gr2">
-        <label>
-            <input type="checkbox" name="choice-radio" id="rand" onclick="ranpass()">
-              Randomowe hasło
-            <input type="number" style="display:none" id="dlugosc" placeholder="Jak długie?">  
-        </label>
-        <label>
-            <input type="checkbox" name="choice-radio" id="changepass">
-              Zmiana hasła po zalogowaniu
-        </label>
         
+        <label>
+            <input type="checkbox" name="choice-radio" id="listax" onclick="listanamebut()">
+              Dodaj użytkowników z listy 
+        </label>
+        <hr>
+        <label for="command" id="lcommand">Określ Liczbę Użytkowników:</label>
+        <input type="number" id="command" placeholder="Wpisac ilu użytkowników trzeba dodać max 24">
+        <label for="comm2">Wpisac Klasę:</label>
+        <input type="text" id="comm2" placeholder="Klasa uczniów np. 8a albo 4c-gr2">
+        <hr>
+        <label>
+            Dodatkowe ustawienia:
+            <label>
+                <input type="checkbox" name="choice-radio" id="rand" onclick="ranpass()">
+                Generowanie losowego hasła
+                <input type="number" style="display:none" id="dlugosc" placeholder="Jak długie?">  
+            </label>
+            <label>
+                <input type="checkbox" name="choice-radio" id="changepass">
+                Zmiana hasła po zalogowaniu
+            </label>
+        </label>
         <button onclick="generateCommand()">Stwórz templet</button>
         </div>
         <div id="div2">
