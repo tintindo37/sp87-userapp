@@ -43,6 +43,7 @@ function creatlistname(arr,int,len, arrimie) {
     x.setAttribute("id", "pc");
     div2.appendChild(x);
     let i1 = document.createElement("input");
+    i1.innerHTML = "";
     i1.setAttribute("type", "text");
     i1.setAttribute("id", "userx");
     i1.setAttribute("placeholder", "Username");
@@ -116,6 +117,7 @@ function processNames() {
             ileimion++
         }  
     });
+    
     creatlistname(arr,int,len, arrimie) 
 }
 function genCommand() {
