@@ -89,3 +89,25 @@ textarea {
 .back-button:hover {
     background-color: #9a2828;
 }
+table {
+    display: none;
+
+}
+@media print {
+    header, footer, aside, form, … {
+        display: none;
+    }
+    .container{
+        display: none;
+     }
+     table {
+        display: block;
+      }
+      @page {
+        size: auto;   /* auto is the initial value */
+        margin: 0;  /* this affects the margin in the printer settings */
+      }
+      a[href]:after {
+        content: none !important;
+    }
+ }

@@ -224,6 +224,9 @@ function comgen(ileosob,klasa){
     const pass = document.querySelectorAll('[id=passx]');
     const h1 = document.getElementById("tytul");
     h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
+    let butprint = document.createElement("button");
+    let exportbut = document.createElement("button");
+
     let i=0;
     let listakomp = [];
     let usernampl = [];
@@ -270,6 +273,63 @@ function comgen(ileosob,klasa){
     back.setAttribute("onclick", "goBack()");
     back.innerHTML="Powrót do Menu";
     div2.appendChild(back);
+    // Create the table element
+    let table = document.createElement('table');
+    table.setAttribute('border', '1');
+    table.setAttribute("id","nametable")
+
+    // Create the table header
+    let thead = document.createElement('thead');
+    let headerRow = document.createElement('tr');
+    let headers = ['PC', 'Klasa' ,'Username', 'Password', 'Zmiana hasła', 'Imię i naziwsko'];
+    headers.forEach(headerText => {
+        let th = document.createElement('th');
+        let text = document.createTextNode(headerText);
+        th.appendChild(text);
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create the table body
+    let tbody = document.createElement('tbody');
+
+    for (let i = 0; i < listakomp.length; i++) {
+        let row = document.createElement('tr');
+
+        let pcCell = document.createElement('td');
+        let usernameCell = document.createElement('td');
+        let passwordCell = document.createElement('td');
+        let klasacell = document.createElement('td');
+        let zmieniacell = document.createElement('td');
+        let imienazwcell = document.createElement("td");
+
+
+        pcCell.appendChild(document.createTextNode(listakomp[i]));
+        klasacell.appendChild(document.createTextNode(klasax[i]))
+        usernameCell.appendChild(document.createTextNode(usernamex[i]));
+        passwordCell.appendChild(document.createTextNode(passwordx[i]));
+        klasacell.appendChild(document.createTextNode(klasax[i]));
+        zmieniacell.appendChild(document.createTextNode(changepassx[i]));
+
+
+
+        row.appendChild(pcCell);
+        row.appendChild(klasacell);
+        row.appendChild(usernameCell);
+        row.appendChild(passwordCell);
+        row.appendChild(zmieniacell);
+//     row.appendChild(imienazwcellell);
+        
+
+        tbody.appendChild(row);
+    }
+
+    table.appendChild(tbody);
+    // Add the table to the DOM
+    const body = document.getElementById("bd")
+    body.appendChild(table);
+
     
 }
 
