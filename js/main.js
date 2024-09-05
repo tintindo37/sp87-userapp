@@ -273,6 +273,19 @@ function comgen(ileosob,klasa){
     back.setAttribute("onclick", "goBack()");
     back.innerHTML="Powrót do Menu";
     div2.appendChild(back);
+
+    let back2 = document.createElement("button");
+    back2.setAttribute("id", "printbutt");
+    back2.setAttribute("onclick", "window.print()");
+    back2.innerHTML="Wydrukuj";
+    div2.appendChild(back2);
+
+    let back3 = document.createElement("button");
+    back3.setAttribute("id", "exelbutt");
+    back3.setAttribute("onclick", "exportData('xlsx','"+klasa+"')");
+    back3.innerHTML="export to exel";
+    div2.appendChild(back3);
+
     // Create the table element
     let table = document.createElement('table');
     table.setAttribute('border', '1');
@@ -281,7 +294,7 @@ function comgen(ileosob,klasa){
     // Create the table header
     let thead = document.createElement('thead');
     let headerRow = document.createElement('tr');
-    let headers = ['PC', 'Klasa' ,'Username', 'Password', 'Zmiana hasła', 'Imię i naziwsko'];
+    let headers = ['PC' ,'Username', 'Password', 'Zmiana hasła',  'Klasa', 'Imię i naziwsko'];
     headers.forEach(headerText => {
         let th = document.createElement('th');
         let text = document.createTextNode(headerText);
@@ -305,20 +318,23 @@ function comgen(ileosob,klasa){
         let imienazwcell = document.createElement("td");
 
 
-        pcCell.appendChild(document.createTextNode(listakomp[i]));
-        klasacell.appendChild(document.createTextNode(klasax[i]))
-        usernameCell.appendChild(document.createTextNode(usernamex[i]));
-        passwordCell.appendChild(document.createTextNode(passwordx[i]));
-        klasacell.appendChild(document.createTextNode(klasax[i]));
-        zmieniacell.appendChild(document.createTextNode(changepassx[i]));
+        pcCell.appendChild(document.createTextNode(listakomp[i].replace(/"/g, '')));
+        usernameCell.appendChild(document.createTextNode(usernamex[i].replace(/"/g, '')));
+        passwordCell.appendChild(document.createTextNode(passwordx[i].replace(/"/g, '')));
+        let zmiana = klasax[i].replace(/"/g, '');
+        if(zmiana = "yes"){
+            zmieniacell.appendChild(document.createTextNode("tak"));
+        }else{
+            zmieniacell.appendChild(document.createTextNode("nie"));
 
-
+        }
+        klasacell.appendChild(document.createTextNode(klasax[i].replace(/"/g, '')));
 
         row.appendChild(pcCell);
-        row.appendChild(klasacell);
         row.appendChild(usernameCell);
         row.appendChild(passwordCell);
         row.appendChild(zmieniacell);
+        row.appendChild(klasacell);
 //     row.appendChild(imienazwcellell);
         
 
@@ -328,11 +344,19 @@ function comgen(ileosob,klasa){
     table.appendChild(tbody);
     // Add the table to the DOM
     const body = document.getElementById("bd")
+    table.setAttribute("id","table")
     body.appendChild(table);
 
     
 }
-
+// do exportowania plików do exela
+function exportData(type, klasa){
+    let kl = "Klasa " +klasa+".";
+    const fileName = kl + type
+    const table = document.getElementById("table")
+    const wb = XLSX.utils.table_to_book(table)
+    XLSX.writeFile(wb, fileName)
+}
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")
 //    $pass = @("Pass123")

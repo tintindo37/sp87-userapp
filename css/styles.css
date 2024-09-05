@@ -93,6 +93,34 @@ table {
     display: none;
 
 }
+#featureBox {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.printbutt button{
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #3cff00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.exelbutt button{
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #ff7700;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 @media print {
     header, footer, aside, form, … {
         display: none;
