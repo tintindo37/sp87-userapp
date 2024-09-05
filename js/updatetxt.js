@@ -12,7 +12,7 @@ function patch(){
     featureBox.style.display = 'none';
 }
 async function fetchFeatureText() {
-    const response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/testing-main/patchnote/latest.txt.txt'); // Update this URL
+    const response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt'); // Update this URL
     const text = await response.text();
     return text;
 }
