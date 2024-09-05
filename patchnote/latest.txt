@@ -1,19 +1,20 @@
 Nowości w Aktualizacji
 Aktualizacja z 05.09.2024:
 
--Drukowanie loginami i hasłami
-    Teraz podczas eksportowania konfiguracji można dodatkowo wydrukować loginy i hasła.
--Eksportowanie loginów i haseł do Excela
-    Dodałem funkcję umożliwiającą eksportowanie loginów i haseł bezpośrednio do pliku Excel.
+-Drukowanie loginów i hasła:
+---Teraz podczas eksportowania konfiguracji można dodatkowo wydrukować loginy i hasła.
 
--Nowe funkcje aktualizacji w aplikacji
-    Aplikacja teraz wyświetla informacje o nowych funkcjach i zmianach, dzięki czemu łatwiej się dowiedzieć o najnowszych aktualizacjach.
+-Eksportowanie loginów i haseł do Excela:
+---Dodałem funkcję umożliwiającą eksportowanie loginów i haseł bezpośrednio do pliku Excel.
+
+-Nowe funkcje aktualizacji w aplikacji:
+---Aplikacja teraz wyświetla informacje o nowych funkcjach i zmianach, dzięki czemu łatwiej się dowiedzieć o najnowszych aktualizacjach.
 
 Aktualizacja z 04.09.2024:
 
--Dodawanie użytkowników z listy nazw
-    Umożliwia szybkie dodawanie wielu użytkowników bezpośrednio z przygotowanej listy nazw. 
+-Dodawanie użytkowników z listy nazw:
+---Umożliwia szybkie dodawanie wielu użytkowników bezpośrednio z przygotowanej listy nazw. 
 
--Przyciski powrotu do menu głównego
-    Dodałem nowe przyciski umożliwiające szybki powrót do menu głównego.
+-Przyciski powrotu do menu głównego:
+---Dodałem nowe przyciski umożliwiające szybki powrót do menu głównego.
 
