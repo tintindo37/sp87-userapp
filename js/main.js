@@ -356,6 +356,10 @@ function exportData(type, klasa){
     const table = document.getElementById("table")
     const wb = XLSX.utils.table_to_book(table)
     XLSX.writeFile(wb, fileName)
+    const body = document.getElementById("bd");
+    let txt = document.createElement("p");
+    txt.innerHTML = "Pobrało się do folderu pobrane";
+    body.appendChild(txt);
 }
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")

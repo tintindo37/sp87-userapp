@@ -18,3 +18,5 @@ Aktualizacja z 04.09.2024:
 -Przyciski powrotu do menu głównego:
 ---Dodałem nowe przyciski umożliwiające szybki powrót do menu głównego.
 
+-Bug:
+Jak klika export do Excel nie wyswietla się okno gdzie zainstlować plik powinno być domyślnie w folderze Pobrane C:User\ktos\Downloads
