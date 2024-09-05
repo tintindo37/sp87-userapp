@@ -1,19 +1,19 @@
 
 
-$namepc = $env:computername 
-$listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
-$nazwauzyt = @("AKlonowski","cos")
-$pass = @("Pass123")
-$changepass = @("yes","no")
-$comm = @("klasa 2a", "klasa 3b")
-$imie = @("Adam Kowalski")
+
+#$namepc = $env:computername 
+#$listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
+#$nazwauzyt = @("AKlonowski","cos")
+#$pass = @("Pass123")
+#$changepass = @("yes","no")
+#$comm = @("klasa 2a", "klasa 3b")
+#$imie = @("Adam Kowalski")
 
 if ($listakomp -contains $namepc) {
     $index =  [int]$listakomp.IndexOf($namepc)
     $user = $nazwauzyt[$index]
     $pasx = $pass[$index]
     Write-Host ("$user, $pasx")
-# 
     $kom = $comm[$index]
 
     if ($imie -ne $null -and $imie.Count -gt 0) {
