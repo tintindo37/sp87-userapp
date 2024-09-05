@@ -13,17 +13,23 @@ if ($listakomp -contains $namepc) {
     $user = $nazwauzyt[$index]
     $pasx = $pass[$index]
     Write-Host ("$user, $pasx")
-#    $namex = $imie[$index]
+# 
     $kom = $comm[$index]
-    if ($changepass[$index] -eq "yes") {
-        $index =  [int]$listakomp.IndexOf($name)
-        Net User /add $user $pasx /passwordreq:yes /logonpasswordchg:yes  /comment:$kom
-        #/fullname:$namex
-    }
+
+    if ($imie -ne $null -and $imie.Count -gt 0) {
+        $namex = $imie[$index]
+        Net User /add "$user" "$pasx" /passwordreq:yes /logonpasswordchg:yes  /comment:"$kom" /fullname:"$namex"
+
+    }       
     else {
-        Net User /add $user $pasx /passwordreq:yes /logonpasswordchg:no  /comment:$kom   
-        #/fullname:$namex
+        if ($changepass[$index] -eq "yes") {
+            Net User /add "$user" "$pasx" /passwordreq:yes /logonpasswordchg:yes  /comment:"$kom"
+            }
+        else {
+            Net User /add "$user" "$pasx" /passwordreq:yes /logonpasswordchg:no  /comment:"$kom"
+        }
     }
+    
     Write-Host("Uzytkownik "+ $user + " został dodany na komputerze "+ $namepc)
 }
 else {

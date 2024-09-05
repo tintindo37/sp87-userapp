@@ -149,13 +149,14 @@ function generateCommand() {
         genCommand();
     }
 }
+var namlista = [];
+
 function processNames(dl,klasa) {
     const namesText = document.getElementById("namesInput").value;
     // Split the input by new lines
     const namesArray = namesText.split("\n");
     // Get the unordered list element
     const namesList = document.getElementById("namesList");
-    let namlista = [];
     // Create a list item for each name
     let ileimion = 0;
     namesArray.forEach(name => {
@@ -224,8 +225,6 @@ function comgen(ileosob,klasa){
     const pass = document.querySelectorAll('[id=passx]');
     const h1 = document.getElementById("tytul");
     h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
-    let butprint = document.createElement("button");
-    let exportbut = document.createElement("button");
 
     let i=0;
     let listakomp = [];
@@ -246,19 +245,19 @@ function comgen(ileosob,klasa){
             changepassx.push('"no"'); 
         }
 
-    //    imienazw.push[];   //do zrobienia dodac imie i nazwisko
+        imienazw.push('"'+namlista[i]+'"'); 
         i++;
     } 
 
     let usernamex = removePolishCharacters(usernampl);
     let passwordx = removePolishCharacters(passwordxpl);
-
+    let imienazwpl = removePolishCharacters(imienazw);
     let listaex = "$listakomp = @("+listakomp.toString()+")";
     let userex = "$nazwauzyt = @("+usernamex.toString()+")";
     let pasx = "$pass = @("+passwordx.toString()+")";
     let changex = "$changepass = @("+changepassx.toString()+")";
     let klaex = "$comm = @("+klasax.toString()+")";
-    let imiex = "$imie = @("+imienazw.toString()+")";
+    let imiex = "$imie = @("+imienazwpl.toString()+")";
     const div2 = document.getElementById('div2');
     div2.innerHTML = "";
     let p = document.createElement("p");
@@ -329,6 +328,8 @@ function comgen(ileosob,klasa){
 
         }
         klasacell.appendChild(document.createTextNode(klasax[i].replace(/"/g, '')));
+        imienazwcell.appendChild(document.createTextNode(imienazwpl[i].replace(/"/g, '')));
+
 
         row.appendChild(pcCell);
         row.appendChild(usernameCell);
