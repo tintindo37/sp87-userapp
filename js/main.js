@@ -224,6 +224,9 @@ function comgen(ileosob,klasa){
     const pass = document.querySelectorAll('[id=passx]');
     const h1 = document.getElementById("tytul");
     h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
+    let butprint = document.createElement("button");
+    let exportbut = document.createElement("button");
+
     let i=0;
     let listakomp = [];
     let usernampl = [];
@@ -270,9 +273,90 @@ function comgen(ileosob,klasa){
     back.setAttribute("onclick", "goBack()");
     back.innerHTML="Powrót do Menu";
     div2.appendChild(back);
+
+    let back2 = document.createElement("button");
+    back2.setAttribute("id", "printbutt");
+    back2.setAttribute("onclick", "window.print()");
+    back2.innerHTML="Wydrukuj";
+    div2.appendChild(back2);
+
+    let back3 = document.createElement("button");
+    back3.setAttribute("id", "exelbutt");
+    back3.setAttribute("onclick", "exportData('xlsx','"+klasa+"')");
+    back3.innerHTML="export to exel";
+    div2.appendChild(back3);
+
+    // Create the table element
+    let table = document.createElement('table');
+    table.setAttribute('border', '1');
+    table.setAttribute("id","nametable")
+
+    // Create the table header
+    let thead = document.createElement('thead');
+    let headerRow = document.createElement('tr');
+    let headers = ['PC' ,'Username', 'Password', 'Zmiana hasła',  'Klasa', 'Imię i naziwsko'];
+    headers.forEach(headerText => {
+        let th = document.createElement('th');
+        let text = document.createTextNode(headerText);
+        th.appendChild(text);
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create the table body
+    let tbody = document.createElement('tbody');
+
+    for (let i = 0; i < listakomp.length; i++) {
+        let row = document.createElement('tr');
+
+        let pcCell = document.createElement('td');
+        let usernameCell = document.createElement('td');
+        let passwordCell = document.createElement('td');
+        let klasacell = document.createElement('td');
+        let zmieniacell = document.createElement('td');
+        let imienazwcell = document.createElement("td");
+
+
+        pcCell.appendChild(document.createTextNode(listakomp[i].replace(/"/g, '')));
+        usernameCell.appendChild(document.createTextNode(usernamex[i].replace(/"/g, '')));
+        passwordCell.appendChild(document.createTextNode(passwordx[i].replace(/"/g, '')));
+        let zmiana = klasax[i].replace(/"/g, '');
+        if(zmiana = "yes"){
+            zmieniacell.appendChild(document.createTextNode("tak"));
+        }else{
+            zmieniacell.appendChild(document.createTextNode("nie"));
+
+        }
+        klasacell.appendChild(document.createTextNode(klasax[i].replace(/"/g, '')));
+
+        row.appendChild(pcCell);
+        row.appendChild(usernameCell);
+        row.appendChild(passwordCell);
+        row.appendChild(zmieniacell);
+        row.appendChild(klasacell);
+//     row.appendChild(imienazwcellell);
+        
+
+        tbody.appendChild(row);
+    }
+
+    table.appendChild(tbody);
+    // Add the table to the DOM
+    const body = document.getElementById("bd")
+    table.setAttribute("id","table")
+    body.appendChild(table);
+
     
 }
-
+// do exportowania plików do exela
+function exportData(type, klasa){
+    let kl = "Klasa " +klasa+".";
+    const fileName = kl + type
+    const table = document.getElementById("table")
+    const wb = XLSX.utils.table_to_book(table)
+    XLSX.writeFile(wb, fileName)
+}
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")
 //    $pass = @("Pass123")
