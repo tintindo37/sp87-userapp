@@ -5,7 +5,7 @@ function showFeatureBox(text) {
 }
 
 async function fetchFeatureText() {
-    const response = await fetch('https://raw.githubusercontent.com/username/repository/branch/feature.txt'); // Update this URL
+    const response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/testing-main/patchnote/latest.txt.txt'); // Update this URL
     const text = await response.text();
     return text;
 }
