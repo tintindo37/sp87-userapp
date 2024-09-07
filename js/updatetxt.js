@@ -18,6 +18,7 @@ function patch(){
 async function fetchFeatureText() {
     let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt', {
         cache: "no-store",
+        cache: "no-cache",
     });
     let text = await response.text();
     return text;
@@ -25,6 +26,7 @@ async function fetchFeatureText() {
 async function fetchVersionFeatureText() {
     let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/version.txt', {
         cache: "no-store",
+        cache: "no-cache",
     }); // Update this URL
     let text = await response.text();
     return text;
@@ -32,7 +34,7 @@ async function fetchVersionFeatureText() {
 //funkcja co zdobywa dane z local storage 
 async function getVersionShown() {
     let versionShown = await localStorage.getItem('versionshown');
-//    console.log(versionShown); // Now it's a string
+    console.log("Dun" +versionShown); // Now it's a string
     return versionShown;
 }
 
@@ -40,7 +42,7 @@ async function getVersionShown() {
 async function showFeature(version) {
     let featureText = await fetchFeatureText();
     showFeatureBox(featureText);
-//    console.log("fun"+version);
+    console.log("fun"+version);
     localStorage.setItem('versionshown', version);
 }
 
@@ -48,16 +50,16 @@ async function showFeature(version) {
 //główna funkcja co updatuje strone i backend
 
 
- 
 async function checkAndShowFeature() {
     let version = await fetchVersionFeatureText()
     let localversion = await getVersionShown(); 
-
+    console.log("Lokalna version "+localversion + "i version " + version)
     if (!localStorage.getItem('featureShown')) {
         showFeature(version);
     }
     else if (localversion !== version && localStorage.getItem('featureShown')){
         localStorage.clear();
+        console.log("zmiana");
         showFeature(version);
     }
     else if (localversion == version && localStorage.getItem('featureShown')){
@@ -67,6 +69,5 @@ async function checkAndShowFeature() {
         console.log("error");
     }
 }
-
 
 checkAndShowFeature();
