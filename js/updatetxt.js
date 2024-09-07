@@ -31,7 +31,7 @@ async function checkAndShowFeature() {
         localStorage.setItem('versionshown', version);
     }
     else{
-        const version = fetchVersionFeatureText();
+        const version = await fetchVersionFeatureText();
         if(version !== localStorage.getItem('versionshown')){
             localStorage.setItem('versionshown', version);
             console.log(version);

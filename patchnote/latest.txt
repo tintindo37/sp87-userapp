@@ -1,4 +1,7 @@
 Nowości w Aktualizacji
+Aktualizacja z 07.09.2024:
+---Nowe UI, zmiana w wyglądzie strony
+---dodanie moźliwość dodania nowych wersji patchnota
 Aktualizacja z 05.09.2024:
 
 -Drukowanie loginów i hasła:
