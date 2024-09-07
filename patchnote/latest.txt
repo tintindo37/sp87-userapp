@@ -18,5 +18,5 @@
 
 - Przyciski powrotu do menu głównego, dodano nowe przyciski umożliwiające szybki powrót do menu głównego.<br>
 
-<b>błędy:</b><br>  
+<b>Błędy:</b><br>  
   - Jest problem, w którym po kliknięciu opcji "Eksport do Excela" nie pojawiało się okno wyboru lokalizacji zapisu. Plik powinien być domyślnie zapisywany w folderze `C:\User\ktos\Downloads`.<br>
