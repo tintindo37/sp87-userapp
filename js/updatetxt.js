@@ -11,44 +11,53 @@ function showFeatureBox(text) {
 //funkcja co dodaje featurebox do dom
 function patch(){
     const featureBox = document.getElementById('featureBox');
+
     featureBox.style.display = 'none';
 }
 //funckje co biorą danę z githuba
 async function fetchFeatureText() {
-    const response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt'); // Update this URL
-    const text = await response.text();
+    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt'); // Update this URL
+    let text = await response.text();
     return text;
 }
 async function fetchVersionFeatureText() {
-    const response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/version.txt'); // Update this URL
-    const text = await response.text();
+    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/version.txt'); // Update this URL
+    let text = await response.text();
     return text;
 }
 //funkcja co zdobywa dane z local storage 
 async function getVersionShown() {
     let versionShown = await localStorage.getItem('versionshown');
-    return versionShown ;
+//    console.log(versionShown); // Now it's a string
+    return versionShown;
 }
 
 //główna funkcja co updatuje strone i backend
 async function checkAndShowFeature() {
     if (!localStorage.getItem('featureShown')) {
-        const featureText = await fetchFeatureText();
+        let featureText = await fetchFeatureText();
         showFeatureBox(featureText);
         localStorage.setItem('featureShown', 'true');
-        const version = await fetchVersionFeatureText()
-        localStorage.setItem('versionshown', version);
+        let version = await fetchVersionFeatureText()
+        console.log(version + "1");
+        localStorage.setItem('versionshown', await version);
     }
     else{
-        const version = await fetchVersionFeatureText();
-        const localversion = await getVersionShown();    
+        let version = await fetchVersionFeatureText();
+        let localversion = await getVersionShown();  
+//       console.log(version)
+//        console.log(localversion)  
         if(version !== localversion){
-            const featureText = await fetchFeatureText();
+            let featureText = await fetchFeatureText();
             showFeatureBox(featureText);
             localStorage.clear;
             localStorage.setItem('featureShown', 'true');
-            const version = fetchVersionFeatureText()
+            let version = fetchVersionFeatureText()
             localStorage.setItem('versionshown', version);
+            let version1 = await fetchVersionFeatureText();
+            let localversion = await getVersionShown();  
+            console.log(localversion)  
+            console.log(version1);
             console.log("nowa wersja");
         }
         else{
