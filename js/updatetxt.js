@@ -11,12 +11,14 @@ function showFeatureBox(text) {
 //funkcja co dodaje featurebox do dom
 function patch(){
     const featureBox = document.getElementById('featureBox');
-
+    localStorage.setItem('featureShown', 'true');
     featureBox.style.display = 'none';
 }
 //funckje co biorą danę z githuba
 async function fetchFeatureText() {
-    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt'); // Update this URL
+    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt', {
+        cache: "no-store",
+    });
     let text = await response.text();
     return text;
 }
@@ -30,46 +32,41 @@ async function fetchVersionFeatureText() {
 //funkcja co zdobywa dane z local storage 
 async function getVersionShown() {
     let versionShown = await localStorage.getItem('versionshown');
-    console.log(versionShown); // Now it's a string
+//    console.log(versionShown); // Now it's a string
     return versionShown;
 }
 
+//funkcja co generuje text i zmienia wersje 
+async function showFeature(version) {
+    let featureText = await fetchFeatureText();
+    showFeatureBox(featureText);
+//    console.log("fun"+version);
+    localStorage.setItem('versionshown', version);
+}
+
+
 //główna funkcja co updatuje strone i backend
+
+
+ 
 async function checkAndShowFeature() {
+    let version = await fetchVersionFeatureText()
+    let localversion = await getVersionShown(); 
+
     if (!localStorage.getItem('featureShown')) {
-        let featureText = await fetchFeatureText();
-        showFeatureBox(featureText);
-        localStorage.setItem('featureShown', 'true');
-        let version = await fetchVersionFeatureText()
-        console.log(version + "1");
-        localStorage.setItem('versionshown', await version);
+        showFeature(version);
+    }
+    else if (localversion !== version && localStorage.getItem('featureShown')){
+        localStorage.clear();
+        showFeature(version);
+    }
+    else if (localversion == version && localStorage.getItem('featureShown')){
+        console.log("Nie ma zmian local version " + localversion + "i version " + version + "są takie same");
     }
     else{
-        let version = await fetchVersionFeatureText();
-        let localversion = await getVersionShown();  
-//       console.log(version)
-//        console.log(localversion)  
-        if(version !== localversion){
-            let featureText = await fetchFeatureText();
-            showFeatureBox(featureText);
-            localStorage.clear;
-            localStorage.setItem('featureShown', 'true');
-            let version = fetchVersionFeatureText()
-            localStorage.setItem('versionshown', version);
-            let version1 = await fetchVersionFeatureText();
-            let localversion = await getVersionShown();  
-            console.log(localversion)  
-            console.log(version1);
-            console.log("nowa wersja");
-        }
-        else{
-            console.log("nic sie nie zmieniło");
-            let version1 = await fetchVersionFeatureText();
-            let localversion2 = await getVersionShown();  
-            console.log(localversion2)  
-            console.log(version1);
-        }
+        console.log("error");
     }
 }
+
 
 checkAndShowFeature();
