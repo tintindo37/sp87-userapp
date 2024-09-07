@@ -1,7 +1,7 @@
 //funkcja co woła featurebox 
 function showFeatureBox(text) {
     const featureBox = document.getElementById('featureBox');
-    featureBox.innerText = text;
+    featureBox.innerHTML = text;
     featureBox.style.display = 'block';
     const butt = document.createElement("button");
     butt.innerHTML = "Zamknij update";
