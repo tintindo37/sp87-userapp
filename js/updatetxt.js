@@ -28,6 +28,7 @@ async function checkAndShowFeature() {
         showFeatureBox(featureText);
         localStorage.setItem('featureShown', 'true');
         const version = fetchVersionFeatureText()
+        console.log(version);
         localStorage.setItem('versionshown', version);
     }
     else{
@@ -35,6 +36,9 @@ async function checkAndShowFeature() {
         if(version !== localStorage.getItem('versionshown')){
             localStorage.setItem('versionshown', version);
             console.log(version);
+        }
+        else{
+            console.log("Najnowsza wersja")
         }
     }
 }
