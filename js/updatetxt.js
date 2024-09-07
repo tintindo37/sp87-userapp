@@ -16,7 +16,7 @@ function patch(){
 }
 //funckje co biorą danę z githuba
 async function fetchFeatureText() {
-    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/prod/patchnote/latest.txt', {
+    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/latest.txt', {
         cache: "no-store",
         cache: "no-cache",
     });

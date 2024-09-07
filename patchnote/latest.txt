@@ -1,27 +1,22 @@
 
-**Aktualizacja z 07.09.2024:**
+<strong>Aktualizacja z 07.09.2024:</strong>
 
-- **Nowe UI:** Zmieniono wygląd strony, wprowadzając nowy interfejs użytkownika.
-- **Dodanie funkcji dodawania wersji patch notes:** Nowa funkcjonalność pozwala na dodawanie kolejnych wersji patch notes.
+- Nowe UI: Zmieniono wygląd strony, wprowadzając nowy interfejs użytkownika.
+- Dodanie funkcji, która pozwala na dodawanie kolejnych wersji patch nota.
 
-**Aktualizacja z 05.09.2024:**
+ <strong>Aktualizacja z 05.09.2024:</strong>
 
-- **Drukowanie loginów i haseł:** 
-  - Teraz podczas eksportowania konfiguracji można dodatkowo wydrukować loginy i hasła.
+- Drukowanie loginów i haseł, podczas eksportowania konfiguracji można dodatkowo wydrukować loginy i hasła.
 
-- **Eksportowanie loginów i haseł do Excela:** 
-  - Dodano funkcję umożliwiającą eksportowanie loginów i haseł bezpośrednio do pliku Excel.
+- Eksportowanie loginów i haseł do Excela, podczas eksportowania konfiguracji  można dodatkowo eksportowanie loginów i haseł bezpośrednio do pliku Excel.
 
-- **Nowe funkcje aktualizacji w aplikacji:** 
-  - Aplikacja teraz wyświetla informacje o nowych funkcjach i zmianach, co ułatwia zapoznanie się z najnowszymi aktualizacjami.
+- Nowe funkcje aktualizacji w aplikacji, wyświetla się informacje o nowych funkcjach i zmianach.
 
-**Aktualizacja z 04.09.2024:**
+ <strong>Aktualizacja z 04.09.2024:</strong>
 
-- **Dodawanie użytkowników z listy nazw:** 
-  - Umożliwiono szybkie dodawanie wielu użytkowników bezpośrednio z przygotowanej listy nazw.
+- Dodawanie użytkowników z listy nazw, teraz można szybko dodać wielu użytkowników bezpośrednio z przygotowanej listy nazw.
 
-- **Przyciski powrotu do menu głównego:** 
-  - Dodano nowe przyciski umożliwiające szybki powrót do menu głównego.
+- Przyciski powrotu do menu głównego, dodano nowe przyciski umożliwiające szybki powrót do menu głównego.
 
-- **Poprawki błędów:** 
-  - Naprawiono problem, w którym po kliknięciu opcji "Eksport do Excela" nie pojawiało się okno wyboru lokalizacji zapisu. Plik powinien być domyślnie zapisywany w folderze `C:\User\ktos\Downloads`.
+<strong>błędy:</strong>  
+  - Jest problem, w którym po kliknięciu opcji "Eksport do Excela" nie pojawiało się okno wyboru lokalizacji zapisu. Plik powinien być domyślnie zapisywany w folderze `C:\User\ktos\Downloads`.
