@@ -16,12 +16,26 @@ async function fetchFeatureText() {
     const text = await response.text();
     return text;
 }
+async function fetchVersionFeatureText() {
+    const response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/version.txt'); // Update this URL
+    const text = await response.text();
+    return text;
+}
 
 async function checkAndShowFeature() {
     if (!localStorage.getItem('featureShown')) {
         const featureText = await fetchFeatureText();
         showFeatureBox(featureText);
         localStorage.setItem('featureShown', 'true');
+        const version = fetchVersionFeatureText()
+        localStorage.setItem('versionshown', version);
+    }
+    else{
+        const version = fetchVersionFeatureText();
+        if(version !== localStorage.getItem('versionshown')){
+            localStorage.setItem('versionshown', version);
+            console.log(version);
+        }
     }
 }
 
