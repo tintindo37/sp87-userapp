@@ -21,14 +21,16 @@ async function fetchFeatureText() {
     return text;
 }
 async function fetchVersionFeatureText() {
-    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/version.txt'); // Update this URL
+    let response = await fetch('https://raw.githubusercontent.com/tintindo37/sp87-userapp/test/patchnote/version.txt', {
+        cache: "no-store",
+    }); // Update this URL
     let text = await response.text();
     return text;
 }
 //funkcja co zdobywa dane z local storage 
 async function getVersionShown() {
     let versionShown = await localStorage.getItem('versionshown');
-//    console.log(versionShown); // Now it's a string
+    console.log(versionShown); // Now it's a string
     return versionShown;
 }
 
@@ -62,6 +64,10 @@ async function checkAndShowFeature() {
         }
         else{
             console.log("nic sie nie zmieniło");
+            let version1 = await fetchVersionFeatureText();
+            let localversion2 = await getVersionShown();  
+            console.log(localversion2)  
+            console.log(version1);
         }
     }
 }
