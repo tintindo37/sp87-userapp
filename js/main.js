@@ -280,7 +280,7 @@ function comgen(ileosob,klasa){
     div2.appendChild(back2);
 
     let back3 = document.createElement("button");
-    back3.setAttribute("id", "exelbutt");
+    back3.setAttribute("class", "exelbutt");
     back3.setAttribute("onclick", "exportData('xlsx','"+klasa+"')");
     back3.innerHTML="export to exel";
     div2.appendChild(back3);
@@ -358,10 +358,10 @@ function exportData(type, klasa){
     const wb = XLSX.utils.table_to_book(table)
     XLSX.writeFile(wb, fileName)
     const body = document.getElementById("bd");
-    let txt = document.createElement("p");
-    txt.innerHTML = "Pobrało się do folderu pobrane";
+    alert('Pobrało się do folderu pobrane');
     body.appendChild(txt);
 }
+
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")
 //    $pass = @("Pass123")
