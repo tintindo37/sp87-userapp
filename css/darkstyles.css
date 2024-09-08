@@ -97,7 +97,8 @@ body {
 /* Dark mode for container */
 .container {
   max-width: 650px;
-  height: 95vh;
+  min-height: 95vh;
+  max-height: max-content;
   margin: 40px auto;
   padding: 30px;
   background-color: #333;

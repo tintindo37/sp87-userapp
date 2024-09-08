@@ -2,6 +2,7 @@
 <b>Aktualizacja z 09.09.2024:</b><br>
 
 &#x2022; funkcja dark mode została dodana, umożliwia to włączenie trybu ciemnego.<br>
+&#x2022; Optymalizowałem wygląd głównych divów.<br>
 &#x2022; Naprawiono błąd gdzie przy dodawaniu pojedyńczych użytkowników imie i nazwisko było błąd.<br>
 
 <b>Aktualizacja z 08.09.2024:</b><br>
@@ -22,7 +23,7 @@
 
 &#x2022; Nowe funkcje aktualizacji w aplikacji, wyświetla się informacje o nowych funkcjach i zmianach.<br>
 
- <b>Aktualizacja z 04.09.2024:</b><br>
+<b>Aktualizacja z 04.09.2024:</b><br>
 
 &#x2022; Dodawanie użytkowników z listy nazw, teraz można szybko dodać wielu użytkowników bezpośrednio z przygotowanej listy nazw.<br>
 
