@@ -1,4 +1,29 @@
 /* Basic styling for the input field */
+.toggle-button {
+    width: 20px;
+    position: absolute;
+    margin-right: 10px;
+    text-align: center;
+    top: 10px;
+    right: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.toggle-button:focus {
+    outline: none;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
 input[type="text"], 
 input[type="number"],
 input[type="number"]{
@@ -54,7 +79,7 @@ body {
 }
 .container {
     max-width: 620px;
-    height: calc(90vh - 50px);
+    height: 90vh;
     margin: 40px auto;
     padding: 30px;
     background-color: #fff;
@@ -157,8 +182,17 @@ button:hover {
 .back-button {
     background-color: #dc3545;
 }       
+.back-button:hover {
+    background-color: #721d26;
+}  
 .exelbutt{  
     background-color: #248c01; 
+}
+.exelbutt:hover {
+    background-color: #244818;;
+}
+.back-copy:hover {
+    background-color: #d46710;
 }
 .back-copy{
     background-color: #fd7e14;
@@ -284,6 +318,9 @@ table {
         display: none;
     }
     .container{
+        display: none;
+    }
+    .toggle-button{
         display: none;
     }
     table {

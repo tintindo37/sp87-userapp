@@ -58,7 +58,8 @@ async function checkAndShowFeature() {
         showFeature(version);
     }
     else if (localversion !== version && localStorage.getItem('featureShown')){
-        localStorage.clear();
+        localStorage.removeItem('featureShown');
+        localStorage.removeItem('versionshown');;
 //        console.log("zmiana");
         showFeature(version);
     }

@@ -257,7 +257,12 @@ function comgen(ileosob,klasa){
     let pasx = "$pass = @("+passwordx.toString()+")";
     let changex = "$changepass = @("+changepassx.toString()+")";
     let klaex = "$comm = @("+klasax.toString()+")";
-    let imiex = "$imie = @("+imienazwpl.toString()+")";
+    let imiex = null;
+    if (!namlista.length) {  
+        imiex = "$imie = @()";
+    }else{
+        imiex = "$imie = @("+imienazwpl.toString()+")";    
+    }
     const div2 = document.getElementById('div2');
     div2.innerHTML = "";
     let configbutt = listaex +"`n "+ userex +"`n "+ pasx +"`n "+ changex+"`n "+ klaex +"`n "+ imiex +"`n";
@@ -374,6 +379,7 @@ function exportData(type, klasa){
 //funkcja co kopiuje konfig
 function copy(config){
     navigator.clipboard.writeText(config);
+    alert('Skopiowało się do schowka');
 }
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")

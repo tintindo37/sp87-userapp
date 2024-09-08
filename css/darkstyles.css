@@ -1,8 +1,34 @@
+/* Basic styling for the input field */
+.toggle-button {
+  width: 40px;
+  margin-right: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+table {
+  display: none;
+}
 /* Dark mode styling for the input fields */
 input[type="text"], 
 input[type="number"],
-input[type="password"],
-textarea {
+input[type="password"] {
     width: 100%;
     padding: 10px 15px;
     margin: 8px 0;
@@ -70,16 +96,15 @@ body {
 
 /* Dark mode for container */
 .container {
-    max-width: 600px;
-    height: calc(90vh - 50px);
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #333;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    overflow-y: auto; 
+  max-width: 650px;
+  height: 95vh;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  overflow-y:auto; 
 }
-
 /* Dark mode for headings */
 h1 {
     text-align: center;
@@ -118,7 +143,9 @@ button:hover {
 .back-button {
     background-color: #dc3545;
 }
-
+.back-button:hover {
+  background-color: #721d26;
+}  
 .exelbutt {  
     background-color: #248c01; 
 }
@@ -126,7 +153,12 @@ button:hover {
 .back-copy {
     background-color: #fd7e14;
 }
-
+.exelbutt:hover {
+  background-color: #244818;
+}
+.back-copy:hover {
+  background-color: #d46710;
+}
 /* Dark mode for output area */
 .output {
     margin-top: 20px;
@@ -140,6 +172,16 @@ button:hover {
 textarea {
     background-color: #333;
     color: #f1f1f1;
+    width: 100%;
+    height: 400px;
+    margin: 6px 0 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Dark mode for feature box */
@@ -158,7 +200,40 @@ textarea {
 #featureBox button {
     background-color: #dc3545;
 }
-
+#div2 input {
+  padding: 8px;
+  width: 34%;
+  margin: 5px 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#div2 select {
+  padding: 8px;
+  margin: 5px 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#command {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#dlugosc{
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#comm2 {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 /* Dark mode for checkboxes */
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
     input[type=checkbox] {
@@ -255,20 +330,23 @@ textarea {
 }
 
 @media print {
-    header, footer, aside, form, … {
-        display: none;
-    }
-    .container {
-        display: none;
-    }
-    table {
-        display: block;
-    }
-    @page {
-        size: auto;   /* auto is the initial value */
-        margin: 0;  /* this affects the margin in the printer settings */
-    }
-    a[href]:after {
-        content: none !important;
-    }
+  header, footer, aside, form, … {
+      display: none;
+  }
+  .container{
+      display: none;
+  }
+  .toggle-button{
+    display: none;
+}
+  table {
+      display: block;
+  }
+  @page {
+      size: auto;   /* auto is the initial value */
+      margin: 0;  /* this affects the margin in the printer settings */
+  }
+  a[href]:after {
+      content: none !important;
+  }
 }
