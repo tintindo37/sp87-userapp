@@ -225,7 +225,7 @@ function comgen(ileosob,klasa){
     const pass = document.querySelectorAll('[id=passx]');
     const h1 = document.getElementById("tytul");
 
-    h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
+    h1.innerHTML = 'Skopiować konfiguracje do skryptu "Dodaj wielu użytkowników" w Action1';
     let i=0;
     let listakomp = [];
     let usernampl = [];
@@ -343,7 +343,11 @@ div2.appendChild(back);
 
         }
         klasacell.appendChild(document.createTextNode(klasax[i].replace(/"/g, '')));
-        imienazwcell.appendChild(document.createTextNode(imienazwpl[i].replace(/"/g, '')));
+        if (!namlista.length) {  
+            imienazwcell.appendChild(document.createTextNode(""));
+        }else{
+            imienazwcell.appendChild(document.createTextNode(imienazwpl[i].replace(/"/g, '')));
+        }
 
 
         row.appendChild(pcCell);
