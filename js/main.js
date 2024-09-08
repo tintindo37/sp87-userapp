@@ -224,8 +224,8 @@ function comgen(ileosob,klasa){
     const uzyt = document.querySelectorAll('[id=userx]');
     const pass = document.querySelectorAll('[id=passx]');
     const h1 = document.getElementById("tytul");
-    h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
 
+    h1.innerHTML = "Skopiować konfiguracje do skryptu w Action1";
     let i=0;
     let listakomp = [];
     let usernampl = [];
@@ -260,37 +260,47 @@ function comgen(ileosob,klasa){
     let imiex = "$imie = @("+imienazwpl.toString()+")";
     const div2 = document.getElementById('div2');
     div2.innerHTML = "";
+    let configbutt = listaex +"`n "+ userex +"`n "+ pasx +"`n "+ changex+"`n "+ klaex +"`n "+ imiex +"`n";
+//butt copy   
+    let copyback = document.createElement("button");
+    copyback.setAttribute("class", "back-copy");
+    copyback.setAttribute("onclick", "copy('"+configbutt+"')");
+    copyback.innerHTML="Skopiuj do schowka";
+    div2.appendChild(copyback);
+    
+//config 
     let p = document.createElement("p");
-    p.innerHTML = listaex +"`n <br>"+ userex +"`n <br>"+ pasx +"`n <br>"+ changex+"`n <br>"+ klaex +"`n <br>"+ imiex +"`n";
+    let config = listaex +"`n <br>"+ userex +"`n <br>"+ pasx +"`n <br>"+ changex+"`n <br>"+ klaex +"`n <br>"+ imiex +"`n";
+    p.innerHTML = config;
     div2.appendChild(p);
     let br = document.createElement("br");
     div2.appendChild(br);
     div2.appendChild(br);
     div2.appendChild(br);
-    let back = document.createElement("button");
-    back.setAttribute("class", "back-button");
-    back.setAttribute("onclick", "goBack()");
-    back.innerHTML="Powrót do Menu";
-    div2.appendChild(back);
-
+// butt 2
     let back2 = document.createElement("button");
     back2.setAttribute("id", "printbutt");
     back2.setAttribute("onclick", "window.print()");
     back2.innerHTML="Wydrukuj";
     div2.appendChild(back2);
-
+// butt 3
     let back3 = document.createElement("button");
     back3.setAttribute("class", "exelbutt");
     back3.setAttribute("onclick", "exportData('xlsx','"+klasa+"')");
     back3.innerHTML="export to exel";
     div2.appendChild(back3);
-
-    // Create the table element
+// butt 1
+let back = document.createElement("button");
+back.setAttribute("class", "back-button");
+back.setAttribute("onclick", "goBack()");
+back.innerHTML="Powrót do Menu";
+div2.appendChild(back);
+// Create the table element
     let table = document.createElement('table');
     table.setAttribute('border', '1');
     table.setAttribute("id","nametable")
 
-    // Create the table header
+// Create the table header
     let thead = document.createElement('thead');
     let headerRow = document.createElement('tr');
     let headers = ['PC' ,'Username', 'Password', 'Zmiana hasła',  'Klasa', 'Imię i naziwsko'];
@@ -303,7 +313,7 @@ function comgen(ileosob,klasa){
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
-    // Create the table body
+// Create the table body
     let tbody = document.createElement('tbody');
 
     for (let i = 0; i < listakomp.length; i++) {
@@ -336,7 +346,7 @@ function comgen(ileosob,klasa){
         row.appendChild(passwordCell);
         row.appendChild(zmieniacell);
         row.appendChild(klasacell);
-//     row.appendChild(imienazwcellell);
+        row.appendChild(imienazwcell);
         
 
         tbody.appendChild(row);
@@ -358,10 +368,13 @@ function exportData(type, klasa){
     const wb = XLSX.utils.table_to_book(table)
     XLSX.writeFile(wb, fileName)
     const body = document.getElementById("bd");
-    alert('Pobrało się do folderu pobrane');
+    alert('Pobrało się do folderu Pobrane');
     body.appendChild(txt);
 }
-
+//funkcja co kopiuje konfig
+function copy(config){
+    navigator.clipboard.writeText(config);
+}
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")
 //    $pass = @("Pass123")

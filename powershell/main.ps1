@@ -16,7 +16,7 @@ if ($listakomp -contains $namepc) {
     Write-Host ("$user, $pasx")
     $kom = $comm[$index]
 
-    if ($imie -ne $null -and $imie.Count -gt 0) {
+    if ($null -ne $imie -and $imie.Count -gt 0) {
         $namex = $imie[$index]
         Net User /add "$user" "$pasx" /passwordreq:yes /logonpasswordchg:yes  /comment:"$kom" /fullname:"$namex"
 
