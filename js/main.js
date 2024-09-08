@@ -277,12 +277,6 @@ function comgen(ileosob,klasa){
     div2.appendChild(br);
     div2.appendChild(br);
     div2.appendChild(br);
-// butt 1
-    let back = document.createElement("button");
-    back.setAttribute("class", "back-button");
-    back.setAttribute("onclick", "goBack()");
-    back.innerHTML="Powrót do Menu";
-    div2.appendChild(back);
 // butt 2
     let back2 = document.createElement("button");
     back2.setAttribute("id", "printbutt");
@@ -295,7 +289,12 @@ function comgen(ileosob,klasa){
     back3.setAttribute("onclick", "exportData('xlsx','"+klasa+"')");
     back3.innerHTML="export to exel";
     div2.appendChild(back3);
-
+// butt 1
+let back = document.createElement("button");
+back.setAttribute("class", "back-button");
+back.setAttribute("onclick", "goBack()");
+back.innerHTML="Powrót do Menu";
+div2.appendChild(back);
 // Create the table element
     let table = document.createElement('table');
     table.setAttribute('border', '1');
@@ -347,7 +346,7 @@ function comgen(ileosob,klasa){
         row.appendChild(passwordCell);
         row.appendChild(zmieniacell);
         row.appendChild(klasacell);
-//     row.appendChild(imienazwcellell);
+        row.appendChild(imienazwcell);
         
 
         tbody.appendChild(row);
