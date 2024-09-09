@@ -28,3 +28,7 @@
 &#x2022; Dodawanie użytkowników z listy nazw, teraz można szybko dodać wielu użytkowników bezpośrednio z przygotowanej listy nazw.<br>
 
 &#x2022; Przyciski powrotu do menu głównego, dodano nowe przyciski umożliwiające szybki powrót do menu głównego.<br>
+
+<b>Błąd:</b><br>
+
+&#x2022; Przycisk skopiuj do schowka nie działa.<br>

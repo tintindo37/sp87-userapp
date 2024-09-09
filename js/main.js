@@ -381,8 +381,10 @@ function exportData(type, klasa){
     body.appendChild(txt);
 }
 //funkcja co kopiuje konfig
+const { clipboard } = require('electron');
 function copy(config){
     navigator.clipboard.writeText(config);
+    clipboard.writeText(config);
     alert('Skopiowało się do schowka');
 }
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
