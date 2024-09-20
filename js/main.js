@@ -131,10 +131,17 @@ function generateCommand() {
         const div1 = document.getElementById("div1")
         div1.innerHTML = "";
         const div2 = document.getElementById('div2');
+        let div4 = document.createElement('div');
+        div4.setAttribute("id", "div4");
+        let div3 = document.createElement('div');
+        div3.setAttribute("id","lineNumbers");
+        div4.appendChild(div3);
         let txtbox = document.createElement("textarea");
-        txtbox.setAttribute("id","namesInput")
+        txtbox.setAttribute("id","namesInput");
+        txtbox.setAttribute( "oninput", "updateLineNumbers()");
         txtbox.setAttribute("placeholder", "Wpisać imie i nazwiska, każde na nowej lini (automatycznie polskie znaki się usuną)")    
-        div2.appendChild(txtbox);     
+        div4.appendChild(txtbox);
+        div2.appendChild(div4);     
         let but1 = document.createElement("button");
         but1.innerHTML = "wygeneruj komende";
         but1.setAttribute("id", "comgen");
@@ -149,6 +156,21 @@ function generateCommand() {
         genCommand();
     }
 }
+function updateLineNumbers() {
+    const textArea = document.getElementById('namesInput');
+    const lineNumbers = document.getElementById('lineNumbers');
+    const lines = textArea.value.split('\n').length;
+    let lineNumberText = '';
+
+    for (let i = 1; i <= lines; i++) {
+        lineNumberText += i + '.\n<br>';
+    }
+
+    lineNumbers.innerHTML = lineNumberText;
+}
+
+// Initialize line numbers on page load
+updateLineNumbers();
 var namlista = [];
 
 function processNames(dl,klasa) {
@@ -383,10 +405,10 @@ function exportData(type, klasa){
 //funkcja co kopiuje konfig
 const { clipboard } = require('electron');
 function copy(config){
-    navigator.clipboard.writeText(config);
     clipboard.writeText(config);
     alert('Skopiowało się do schowka');
 }
+
 //    $listakomp = @("cos", "Dekstop-1","desktop-2","lap1")
 //    $nazwauzyt = @("AKlonowski","cos")
 //    $pass = @("Pass123")
